@@ -1,4 +1,4 @@
-import os, csv
+import os, csv, time
 from config import base
 
 #Каталог и файл с базой, куда письма уже отправили
