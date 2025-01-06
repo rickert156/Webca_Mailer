@@ -2,7 +2,7 @@ import smtplib, time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from module.template_message import Message
-
+from module.colors import YELLOW, RESET, GREEN
 
 def SendMessage(login: str = None, password: str = None, recipient: str = None):
 
@@ -28,8 +28,8 @@ def SendMessage(login: str = None, password: str = None, recipient: str = None):
         #Отправка письма 
         server.sendmail(login, recipient, msg.as_string())
 
-    except Exception as err:print(f'[x] Отправка не удалась: {err}')
-    else:print(f'[+] {login} -> {recipient}')
+    except Exception as err:print(f'{YELLOW}[x] Отправка не удалась: {err}{RESET}')
+    else:print(f'{GREEN}[+] {login} -> {recipient}{RESET}')
     finally:server.quit()
 
 

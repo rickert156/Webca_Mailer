@@ -3,6 +3,7 @@ import csv, os, time
 from module.send_message import SendMessage
 from module.miniTools import recording_done_email, create_done_dir
 from module.miniTools import path_done_file, path_base_file
+from module.colors import RESET, RED, GREEN, YELLOW
 
 #Файл конфигурации, в нем нужно добавить эти переменные base и LIMIT_MESSAGE
 from config import base, LIMIT_MESSAGE
@@ -27,9 +28,6 @@ def main():
     account_dir, account_file = 'data', 'account.csv'
 
     path_account_file = f'{account_dir}/{account_file}'
-
-    
-    
     
     with open(path_account_file, 'r') as file_account:
         number_account = 0
@@ -53,8 +51,8 @@ def main():
                         #Записываем 
                         recording_done_email(login=login, recipient=email)
                         
-                        print(f'[{number_account}] {login} | {password} \t[{number_email}] {email}')
-                        time.sleep(10)
+                        print(f'{RED}[{number_account}]{RESET} {GREEN}{login}{RESET} -> {RED}[{number_email}]{RESET} {YELLOW}{email}{RESET}')
+                        #time.sleep(10)
 
 
                     if number_email == LIMIT_MESSAGE:
