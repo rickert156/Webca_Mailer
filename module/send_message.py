@@ -3,6 +3,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from module.template_message import Message
 from module.colors import YELLOW, RESET, GREEN
+from config import host
 
 def SendMessage(login: str = None, password: str = None, recipient: str = None):
 
@@ -13,7 +14,7 @@ def SendMessage(login: str = None, password: str = None, recipient: str = None):
 
     try:
         #Инициализация сервера smtp
-        server = smtplib.SMTP_SSL(host='mail.webcadev.ru', port=465)
+        server = smtplib.SMTP_SSL(host=host, port=465)
         server.login(login, password)
 
         msg = MIMEMultipart()
